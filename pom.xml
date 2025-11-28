@@ -4,18 +4,19 @@
 
   <!-- Attention: to properly separate dependencies of extension and examples, do not define any dependencies/management here! -->
 
-  <parent>
-    <groupId>org.camunda.community</groupId>
-    <artifactId>community-hub-release-parent</artifactId>
-    <version>2.1.0</version>
-  </parent>
+    <parent>
+        <groupId>org.cibseven.community</groupId>
+        <artifactId>release-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath />
+    </parent>
 
-  <groupId>org.camunda.bpm.extension</groupId>
-  <artifactId>camunda-platform-7-keycloak-root</artifactId>
+  <groupId>org.cibseven.bpm.extension</groupId>
+  <artifactId>cibseven-platform-7-keycloak-root</artifactId>
   <version>7.24.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Camunda Platform 7 - engine plugins - identity - keycloak - root</name>
-  <description>A Camunda 7 Identity Provider Plugin for Keycloak</description>
+  <name>cibseven - engine plugins - identity - keycloak - root</name>
+  <description>A cibseven Identity Provider Plugin for Keycloak</description>
   
   <properties>
     <version.java>17</version.java>
@@ -24,8 +25,8 @@
     <project.build.resourceEncoding>${encoding}</project.build.resourceEncoding>
 
     <!-- versions -->
-	<version.camunda>7.24.0</version.camunda>
-    <!-- <version.camunda>7.24.0-ee</version.camunda> -->
+      <cibseven.version>2.1.0</cibseven.version>
+
 	<version.springBoot>3.5.7</version.springBoot>
     <version.commons-codec>1.19.0</version.commons-codec>
 
@@ -73,13 +74,13 @@
   
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-bom</artifactId>
-        <version>${version.camunda}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
+        <dependency>
+            <groupId>org.cibseven.bpm</groupId>
+            <artifactId>cibseven-bom</artifactId>
+            <version>${cibseven.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
@@ -89,14 +90,14 @@
       </dependency>
       <!-- modules -->
       <dependency>
-        <groupId>org.camunda.bpm.extension</groupId>
-        <artifactId>camunda-platform-7-keycloak</artifactId>
+        <groupId>org.cibseven.bpm.extension</groupId>
+        <artifactId>cibseven-platform-7-keycloak</artifactId>
         <version>${project.version}</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
-        <groupId>org.camunda.bpm.extension</groupId>
-        <artifactId>camunda-platform-7-keycloak-jwt</artifactId>
+        <groupId>org.cibseven.bpm.extension</groupId>
+        <artifactId>cibseven-platform-7-keycloak-jwt</artifactId>
         <version>${project.version}</version>
         <scope>provided</scope>
       </dependency>
@@ -104,12 +105,13 @@
   </dependencyManagement>
 
   <repositories>
-    <!-- Camunda Repository -->
+    <!-- Camunda Repository
     <repository>
         <id>camunda-bpm</id>
         <name>Camunda Enterprise Maven Repository</name>
         <url>https://artifacts.camunda.com/artifactory/camunda-bpm/</url>
     </repository>
+    -->
     <!-- Camunda EE Repository 
     <repository>
         <id>camunda-bpm-ee</id>
@@ -139,9 +141,9 @@
           <legacyMode>true</legacyMode>
           <additionalDependencies>
             <dependency>
-              <groupId>org.camunda.bpm</groupId>
-              <artifactId>camunda-engine</artifactId>
-              <version>${version.camunda}</version>
+              <groupId>org.cibseven.bpm</groupId>
+              <artifactId>cibseven-engine</artifactId>
+              <version>${cibseven.version}</version>
             </dependency>
           </additionalDependencies>
         </configuration>

@@ -33,7 +33,7 @@ Your dependency for the Keycloak Identity Provider still is:
 
 ```xml
     <dependency>
-        <groupId>org.camunda.bpm.extension</groupId>
+        <groupId>org.cibseven.bpm.extension</groupId>
         <artifactId>camunda-platform-7-keycloak</artifactId>
     </dependency>
 ```
@@ -46,7 +46,7 @@ First of all we need an additional dependency which does most of the magic:
 
 ```xml
     <dependency>
-        <groupId>org.camunda.bpm.extension</groupId>
+        <groupId>org.cibseven.bpm.extension</groupId>
         <artifactId>camunda-platform-7-keycloak-jwt</artifactId>
     </dependency>
 ```
@@ -109,7 +109,7 @@ public class WebAppSecurityConfig {
 
         FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
         filterRegistration.setFilter(new KeycloakJwtAuthenticationFilter(camundaWebappPath));
-        filterRegistration.setInitParameters(Collections.singletonMap("authentication-provider", "org.camunda.bpm.extension.keycloak.auth.KeycloakJwtAuthenticationProvider"));
+        filterRegistration.setInitParameters(Collections.singletonMap("authentication-provider", "auth.org.cibseven.bpm.extension.keycloak.KeycloakJwtAuthenticationProvider"));
         filterRegistration.setName(AUTHENTICATION_FILTER_NAME);
         filterRegistration.setOrder(AFTER_SPRING_SECURITY_FILTER_CHAIN_ORDER);
         filterRegistration.addUrlPatterns(camundaWebappPath + API_FILTER_PATTERN);

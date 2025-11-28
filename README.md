@@ -2,7 +2,7 @@
 [![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)
 ![](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
 [![](https://img.shields.io/badge/Lifecycle-Deprecated-yellowgreen)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#deprecated-)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.camunda.bpm.extension/camunda-platform-7-keycloak/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.camunda.bpm.extension/camunda-platform-7-keycloak)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.cibseven.bpm.extension/camunda-platform-7-keycloak/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.cibseven.bpm.extension/camunda-platform-7-keycloak)
  [![Apache License V.2](https://img.shields.io/badge/license-Apache%20V.2-blue.svg)](./LICENSE)
 
 **Important Notice**
@@ -88,7 +88,7 @@ Known limitations:
 Maven Dependencies:
 ```xml
 <dependency>
-    <groupId>org.camunda.bpm.extension</groupId>
+    <groupId>org.cibseven.bpm.extension</groupId>
     <artifactId>camunda-platform-7-keycloak</artifactId>
     <version>7.24.0</version>
 </dependency>
@@ -101,7 +101,7 @@ package <your-package>;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import org.camunda.bpm.extension.keycloak.plugin.KeycloakIdentityProviderPlugin;
+import plugin.org.cibseven.bpm.extension.keycloak.KeycloakIdentityProviderPlugin;
 
 @Component
 @ConfigurationProperties(prefix="plugin.identity.keycloak")
@@ -288,7 +288,7 @@ public class WebAppSecurityConfig {
 
         FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
         filterRegistration.setFilter(new ContainerBasedAuthenticationFilter());
-        filterRegistration.setInitParameters(Collections.singletonMap("authentication-provider", "org.camunda.bpm.extension.keycloak.showcase.sso.KeycloakAuthenticationProvider"));
+        filterRegistration.setInitParameters(Collections.singletonMap("authentication-provider", "sso.showcase.org.cibseven.bpm.extension.keycloak.KeycloakAuthenticationProvider"));
         filterRegistration.setOrder(201); // make sure the filter is registered after the Spring Security Filter Chain
         filterRegistration.addUrlPatterns("/app/*");
         return filterRegistration;

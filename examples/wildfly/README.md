@@ -7,11 +7,11 @@ For information on how to install Camunda on JBoss/Wildfly carefully read and fo
 
 ## Install the Keycloak Identity Provider Plugin
 
-In order to install the Keycloak Identity Provider Plugin you have to download the library ``camunda-platform-7-keycloak-all-x.y.z.jar`` (can be found e.g. on [Maven Central](https://search.maven.org/search?q=g:org.camunda.bpm.extension%20AND%20a:camunda-platform-7-keycloak-all)) and create a module containing it.
+In order to install the Keycloak Identity Provider Plugin you have to download the library ``camunda-platform-7-keycloak-all-x.y.z.jar`` (can be found e.g. on [Maven Central](https://search.maven.org/search?q=g:org.cibseven.bpm.extension%20AND%20a:camunda-platform-7-keycloak-all)) and create a module containing it.
 To do so, create a directory ``modules/org/camunda/bpm/identity/camunda-identity-keycloak/main`` in your JBoss/Wildfly installation and put the library inside. In the same directory, create a descriptor file named ``module.xml`` with the following content:
 
 ```xml
-<module xmlns="urn:jboss:module:1.0" name="org.camunda.bpm.identity.camunda-identity-keycloak">
+<module xmlns="urn:jboss:module:1.0" name="org.cibseven.bpm.identity.camunda-identity-keycloak">
     <resources>
         <resource-root path="camunda-platform-7-keycloak-all-x.y.z.jar" />
     </resources>
@@ -21,8 +21,8 @@ To do so, create a directory ``modules/org/camunda/bpm/identity/camunda-identity
         <module name="sun.jdk" />
 
         <module name="javax.api" />
-        <module name="org.camunda.bpm.camunda-engine" />
-        <module name="org.camunda.commons.camunda-commons-logging" />
+        <module name="org.cibseven.bpm.camunda-engine" />
+        <module name="org.cibseven.commons.camunda-commons-logging" />
         <module name="org.slf4j"/>
         
     </dependencies>
@@ -32,14 +32,14 @@ To do so, create a directory ``modules/org/camunda/bpm/identity/camunda-identity
 Reference this module in the module descriptor of your Camunda Wildfly Subsystem (``modules/org/camunda/bpm/wildfly/camunda-wildfly-subsystem/main/module.xml``) by adding:
 
 ```xml
-<module xmlns="urn:jboss:module:1.0" name="org.camunda.bpm.wildfly.camunda-wildfly-subsystem">
+<module xmlns="urn:jboss:module:1.0" name="org.cibseven.bpm.wildfly.camunda-wildfly-subsystem">
     <resources>
         ...
     </resources>
 
     <dependencies>
         ...
-        <module name="org.camunda.bpm.identity.camunda-identity-keycloak"/>
+        <module name="org.cibseven.bpm.identity.camunda-identity-keycloak"/>
     </dependencies>
 </module>
 ```
@@ -49,7 +49,7 @@ Reference this module in the module descriptor of your Camunda Wildfly Subsystem
 The last step is to edit the ``standalone.xml`` configuration file in ``standalone/configuration`` to use the plugin in the camunda subsystem. A sample configuration looks as follows:
 
 ```xml
-<subsystem xmlns="urn:org.camunda.bpm.jboss:1.1">
+<subsystem xmlns="urn:org.cibseven.bpm.jboss:1.1">
         <process-engines>
             <process-engine name="default" default="true">
                 <datasource>java:jboss/datasources/ProcessEngine</datasource>
@@ -59,7 +59,7 @@ The last step is to edit the ``standalone.xml`` configuration file in ``standalo
                 </properties>
                 <plugins>
                     <plugin>
-                        <class>org.camunda.bpm.extension.keycloak.plugin.KeycloakIdentityProviderPlugin</class>
+                        <class>plugin.org.cibseven.bpm.extension.keycloak.KeycloakIdentityProviderPlugin</class>
                         <properties>
                             <property name="keycloakIssuerUrl">
                                 http://localhost:8082/auth/realms/ndb
